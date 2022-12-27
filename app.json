@@ -4,12 +4,7 @@
     "slug": "toDo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+    "userInterfaceStyle": "light"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -30,4 +25,4 @@
       "favicon": "./assets/favicon.png"
     }
   }
-}
+

@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Text } from "./styles";
+import { Header } from "../../components/Header";
+import { Container } from "./styles";
 
 export function Home() {
   return (
     <Container>
-      <Text>Hello world</Text>
+      <Header />
     </Container>
   );
 }
