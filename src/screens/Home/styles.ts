@@ -11,6 +11,6 @@ export const Container = styled.View`
 export const Line = styled.View`
   width: 100%;
   height: 1px;
-  background-color: #808080;
+  background-color: #333333;
   margin-top: ${RFValue(20)}px;
 `;

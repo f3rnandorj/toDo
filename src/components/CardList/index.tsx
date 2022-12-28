@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { EvilIcons } from "@expo/vector-icons";
 
-import CheckBox, { Container, Assignment, SendButton } from "./styles";
+import Checkbox, { Container, Assignment, DeleteButton } from "./styles";
 
 export function CardList() {
-  const [checked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(false);
 
   return (
     <Container>
-      <CheckBox
-        appearance="circular"
-        status="info"
-        checked={checked}
-        onChange={(nextChecked) => setChecked(nextChecked)}
-      ></CheckBox>
+      <Checkbox
+        value={isChecked}
+        onValueChange={setChecked}
+        color={isChecked ? "#8284fa" : "#4ea8de"}
+      />
       {<Assignment>Hello world</Assignment>}
-      <SendButton onPress={() => {}}>
-        <EvilIcons name="trash" size={40} />
-      </SendButton>
+      <DeleteButton onPress={() => {}}>
+        <EvilIcons name="trash" size={32} color="#808080" />
+      </DeleteButton>
     </Container>
   );
 }

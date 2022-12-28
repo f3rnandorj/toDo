@@ -16,6 +16,7 @@ export function Home() {
         <Resume />
         <Line />
         <CardList />
+        <CardList />
       </Container>
     </>
   );
