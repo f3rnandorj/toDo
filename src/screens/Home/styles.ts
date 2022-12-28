@@ -2,8 +2,9 @@ import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  justify-content: center;
   align-items: center;
+  background-color: #333333;
+  height: 100%;
 `;
 export const AddToDo = styled.View`
   width: 100%;
