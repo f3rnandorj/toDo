@@ -1,19 +1,18 @@
 import React from "react";
 import { Header } from "../../components/Header";
-import { Container, AddToDo, Input, SendButton } from "./styles";
-import { Ionicons } from "@expo/vector-icons";
+import { Container, Line } from "./styles";
+import { Form } from "../../components/Form";
+import { Resume } from "../../components/Resume";
 
 export function Home() {
   return (
     <>
       <Header />
       <Container>
-        <AddToDo>
-          <Input placeholder="Adicione uma nova tarefa" />
-          <SendButton onPress={() => {}}>
-            <Ionicons name="add-circle-outline" size={24} color="#f2f2f2" />
-          </SendButton>
-        </AddToDo>
+        <Form />
+        <Resume />
+
+        <Line />
       </Container>
     </>
   );
