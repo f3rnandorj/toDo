@@ -14,7 +14,7 @@ export const Input = styled.TextInput.attrs({
 })`
   height: ${RFValue(54)}px;
   flex: 1;
-  background-color: #262626;
+  background-color: #333333;
   border: 1px solid #0d0d0d;
   border-radius: 6px;
   font-family: Inter_400Regular;

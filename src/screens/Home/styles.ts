@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   align-items: center;
-  background-color: #333333;
+  background-color: #262626;
   height: 100%;
   padding: 0 ${RFValue(24)}px;
 `;

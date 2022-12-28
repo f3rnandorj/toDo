@@ -26,7 +26,7 @@ export const Text = styled.Text<{ color: Color }>`
 export const Count = styled.View`
   width: ${RFValue(25)}px;
   height: ${RFValue(19)}px;
-  background-color: #262626;
+  background-color: #333333;
   color: #f2f2f2;
   margin-left: ${RFValue(8)}px;
   border-radius: 999px;
