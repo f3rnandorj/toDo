@@ -8,6 +8,7 @@ export const Container = styled.View`
   flex-direction: row;
   margin-top: ${RFValue(32)}px;
   justify-content: space-between;
+  margin-bottom: ${RFValue(20)}px;
 `;
 
 export const Created = styled.View`

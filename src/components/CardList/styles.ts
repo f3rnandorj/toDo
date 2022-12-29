@@ -3,8 +3,8 @@ import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  flex-direction: row;
   width: 100%;
+  flex-direction: row;
   height: ${RFValue(64)}px;
   background-color: #333333;
   padding: ${RFValue(15)}px;
@@ -26,13 +26,14 @@ export default styled(Checkbox)`
 `;
 
 export const Assignment = styled.Text`
-  justify-content: center;
   align-items: center;
+  align-self: center;
   flex: 1;
   font-family: Inter_400Regular;
   font-size: ${RFValue(14)}px;
   color: #f2f2f2;
   padding-left: ${RFValue(8)}px;
+  padding-right: ${RFValue(8)}px;
 `;
 
 export const DeleteButton = styled.TouchableOpacity`

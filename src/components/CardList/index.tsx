@@ -4,11 +4,11 @@ import { EvilIcons } from "@expo/vector-icons";
 import Checkbox, { Container, Assignment, DeleteButton } from "./styles";
 
 interface Assignment {
-  children: string;
+  text: string;
   onRemove: () => void;
 }
 
-export function CardList({ children, onRemove }: Assignment) {
+export function CardList({ text, onRemove }: Assignment) {
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -18,9 +18,7 @@ export function CardList({ children, onRemove }: Assignment) {
         onValueChange={setChecked}
         color={isChecked ? "#8284fa" : "#4ea8de"}
       />
-
-      <Assignment>{children}</Assignment>
-
+      <Assignment>{text}</Assignment>
       <DeleteButton onPress={onRemove}>
         <EvilIcons name="trash" size={32} color="#808080" />
       </DeleteButton>

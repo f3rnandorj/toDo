@@ -5,8 +5,8 @@ import { Form } from "../../components/Form";
 import { Resume } from "../../components/Resume";
 import { CardList } from "../../components/CardList";
 
-import { Container, Line } from "./styles";
-import { Alert } from "react-native";
+import imgList from "../../assets/clipboard.png";
+import FlatList, { Container, Line, Img, EmptyText } from "./styles";
 
 export function Home() {
   const [nameTask, setNameTask] = useState("");
@@ -14,10 +14,7 @@ export function Home() {
 
   function addNewTask() {
     setAssignment((prevState) => [...prevState, nameTask]);
-    Alert.alert(
-      "Missão adicionada!",
-      "Não se esqueça de verificar as tarefas do dia..."
-    );
+
     setNameTask("");
   }
 
@@ -29,9 +26,24 @@ export function Home() {
       <Container>
         <Form value={nameTask} setValue={setNameTask} addTask={addNewTask} />
         <Resume />
-        <Line />
-
-        <CardList onRemove={removeAssignment}>{"Fh"}</CardList>
+        <FlatList
+          data={assignment}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <CardList key={item} onRemove={removeAssignment} text={item} />
+          )}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <>
+              <Line />
+              <Img source={imgList} />
+              <EmptyText style={{ fontWeight: "bold" }}>
+                Você ainda não tem tarefas cadastradas
+              </EmptyText>
+              <EmptyText>Crie tarefas e organize seus itens a fazer</EmptyText>
+            </>
+          )}
+        />
       </Container>
     </>
   );
