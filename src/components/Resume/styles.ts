@@ -24,13 +24,18 @@ export const Text = styled.Text<{ color: Color }>`
   color: ${(props) => props.color};
 `;
 
-export const Count = styled.View`
+export const CountBox = styled.View`
   width: ${RFValue(25)}px;
   height: ${RFValue(19)}px;
   background-color: #333333;
-  color: #f2f2f2;
   margin-left: ${RFValue(8)}px;
   border-radius: 999px;
   justify-content: center;
   align-items: center;
+`;
+
+export const Count = styled.Text`
+  font-family: Inter_700Bold;
+  color: #d9d9d9;
+  font-size: ${RFValue(12)}px;
 `;

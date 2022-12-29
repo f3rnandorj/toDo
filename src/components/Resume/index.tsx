@@ -1,16 +1,25 @@
 import React from "react";
-import { Container, Created, Completed, Text, Count } from "./styles";
+import { Container, Created, Completed, Text, CountBox, Count } from "./styles";
 
-export function Resume() {
+interface Count {
+  createdQuantity: number;
+  concludedQuantity: number;
+}
+
+export function Resume({ createdQuantity, concludedQuantity }: Count) {
   return (
     <Container>
       <Created>
         <Text color="#4ea8de">Criadas</Text>
-        <Count></Count>
+        <CountBox>
+          <Count>{createdQuantity}</Count>
+        </CountBox>
       </Created>
       <Completed>
         <Text color="#8284fa">Concluídas</Text>
-        <Count></Count>
+        <CountBox>
+          <Count>{concludedQuantity}</Count>
+        </CountBox>
       </Completed>
     </Container>
   );

@@ -30,5 +30,6 @@ export const SendButton = styled.TouchableOpacity`
   justify-content: center;
   background-color: #1e6f9f;
   border-radius: 6px;
+  border: 1px solid #0d0d0d;
   margin-left: ${RFValue(4)}px;
 `;

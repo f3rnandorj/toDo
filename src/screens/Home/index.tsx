@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Alert, Keyboard } from "react-native";
 
 import { Header } from "../../components/Header";
 import { Form } from "../../components/Form";
@@ -14,23 +15,41 @@ export function Home() {
 
   function addNewTask() {
     setAssignment((prevState) => [...prevState, nameTask]);
-
+    Keyboard.dismiss();
     setNameTask("");
   }
 
-  function removeAssignment() {}
+  function removeAssignment(nameTask: string) {
+    Alert.alert("Remover", `Deseja remover essa tarefa?`, [
+      {
+        text: "Sim",
+        onPress: () =>
+          setAssignment((prevState) =>
+            prevState.filter((task) => task !== nameTask)
+          ),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
 
   return (
     <>
       <Header />
       <Container>
         <Form value={nameTask} setValue={setNameTask} addTask={addNewTask} />
-        <Resume />
+        <Resume createdQuantity={assignment.length} />
         <FlatList
           data={assignment}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
-            <CardList key={item} onRemove={removeAssignment} text={item} />
+            <CardList
+              key={item}
+              onRemove={() => removeAssignment(item)}
+              text={item}
+            />
           )}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (

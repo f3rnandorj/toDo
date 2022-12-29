@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AddToDo, Input, SendButton } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 
