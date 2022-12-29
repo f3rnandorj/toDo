@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { createContext, useContext } from "react";
+
 import { EvilIcons } from "@expo/vector-icons";
 
 import Checkbox, { Container, Assignment, DeleteButton } from "./styles";
+import { ContextValue, MyContext } from "../../screens/Home";
 
 interface Assignment {
   text: string;
@@ -9,7 +11,7 @@ interface Assignment {
 }
 
 export function CardList({ text, onRemove }: Assignment) {
-  const [isChecked, setChecked] = useState(false);
+  const { isChecked, setChecked } = useContext<ContextValue>(MyContext);
 
   return (
     <Container>
