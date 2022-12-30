@@ -10,24 +10,19 @@ import imgList from "../../assets/clipboard.png";
 import FlatList, { Container, Line, Img, EmptyText } from "./styles";
 
 export type ContextValue = {
-  isChecked: boolean;
-  setChecked: (value: boolean) => void;
+  taskIsConcluded: (task: string) => boolean;
+  toggleConcludedTasks: (task: string) => void;
 };
 
 export const MyContext = createContext<ContextValue>({
-  isChecked: false,
-  setChecked: () => {},
+  taskIsConcluded: () => false,
+  toggleConcludedTasks: () => {},
 });
 
 export function Home() {
   const [nameTask, setNameTask] = useState("");
   const [assignment, setAssignment] = useState<string[]>([]);
-  const [isChecked, setChecked] = useState(false);
-
-  const contextValue: ContextValue = {
-    isChecked,
-    setChecked,
-  };
+  const [concludedTasks, setConcludedTasks] = useState<string[]>([]);
 
   function addNewTask() {
     setAssignment((prevState) => [...prevState, nameTask]);
@@ -39,10 +34,14 @@ export function Home() {
     Alert.alert("Remover", `Deseja remover essa tarefa?`, [
       {
         text: "Sim",
-        onPress: () =>
+        onPress: () => {
           setAssignment((prevState) =>
             prevState.filter((task) => task !== nameTask)
-          ),
+          );
+          setConcludedTasks((prevState) =>
+            prevState.filter((concludedTask) => concludedTask !== nameTask)
+          );
+        },
       },
       {
         text: "Não",
@@ -50,6 +49,25 @@ export function Home() {
       },
     ]);
   }
+
+  const toggleConcludedTasks = (task: string) => {
+    if (concludedTasks.includes(task)) {
+      setConcludedTasks((prevState) =>
+        prevState.filter((concludedTask) => concludedTask !== task)
+      );
+    } else {
+      setConcludedTasks((prevState) => [...prevState, task]);
+    }
+  };
+
+  const taskIsConcluded = (task: string) => {
+    return concludedTasks.includes(task);
+  };
+
+  const contextValue: ContextValue = {
+    taskIsConcluded,
+    toggleConcludedTasks,
+  };
 
   return (
     <>
@@ -59,7 +77,7 @@ export function Home() {
           <Form value={nameTask} setValue={setNameTask} addTask={addNewTask} />
           <Resume
             createdQuantity={assignment.length}
-            concludedQuantity={isChecked ? assignment.length : 0}
+            concludedQuantity={concludedTasks.length}
           />
           <FlatList
             data={assignment}

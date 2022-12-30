@@ -11,13 +11,15 @@ interface Assignment {
 }
 
 export function CardList({ text, onRemove }: Assignment) {
-  const { isChecked, setChecked } = useContext<ContextValue>(MyContext);
+  const { taskIsConcluded, toggleConcludedTasks } =
+    useContext<ContextValue>(MyContext);
+  const isChecked = taskIsConcluded(text);
 
   return (
     <Container>
       <Checkbox
         value={isChecked}
-        onValueChange={setChecked}
+        onValueChange={() => toggleConcludedTasks(text)}
         color={isChecked ? "#8284fa" : "#4ea8de"}
       />
       <Assignment>{text}</Assignment>
