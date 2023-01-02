@@ -14,7 +14,7 @@ export type ContextValue = {
   toggleConcludedTasks: (task: string) => void;
 };
 
-export const MyContext = createContext<ContextValue>({
+const MyContext = createContext<ContextValue>({
   taskIsConcluded: () => false,
   toggleConcludedTasks: () => {},
 });
@@ -24,13 +24,13 @@ export function Home() {
   const [assignment, setAssignment] = useState<string[]>([]);
   const [concludedTasks, setConcludedTasks] = useState<string[]>([]);
 
-  function addNewTask() {
+  function handleAddNewTask() {
     setAssignment((prevState) => [...prevState, nameTask]);
     Keyboard.dismiss();
     setNameTask("");
   }
 
-  function removeAssignment(nameTask: string) {
+  function handleRemoveAssignment(nameTask: string) {
     Alert.alert("Remover", `Deseja remover essa tarefa?`, [
       {
         text: "Sim",
@@ -74,7 +74,11 @@ export function Home() {
       <MyContext.Provider value={contextValue}>
         <Header />
         <Container>
-          <Form value={nameTask} setValue={setNameTask} addTask={addNewTask} />
+          <Form
+            value={nameTask}
+            setValue={setNameTask}
+            addTask={handleAddNewTask}
+          />
           <Resume
             createdQuantity={assignment.length}
             concludedQuantity={concludedTasks.length}
@@ -85,7 +89,7 @@ export function Home() {
             renderItem={({ item }) => (
               <CardList
                 key={item}
-                onRemove={() => removeAssignment(item)}
+                onRemove={() => handleRemoveAssignment(item)}
                 text={item}
               />
             )}

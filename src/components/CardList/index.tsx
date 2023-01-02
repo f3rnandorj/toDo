@@ -3,12 +3,17 @@ import React, { createContext, useContext } from "react";
 import { EvilIcons } from "@expo/vector-icons";
 
 import Checkbox, { Container, Assignment, DeleteButton } from "./styles";
-import { ContextValue, MyContext } from "../../screens/Home";
+import { ContextValue } from "../../screens/Home";
 
 interface Assignment {
   text: string;
   onRemove: () => void;
 }
+
+const MyContext = createContext<ContextValue>({
+  taskIsConcluded: () => false,
+  toggleConcludedTasks: () => {},
+});
 
 export function CardList({ text, onRemove }: Assignment) {
   const { taskIsConcluded, toggleConcludedTasks } =
