@@ -14,7 +14,7 @@ export type ContextValue = {
   toggleConcludedTasks: (task: string) => void;
 };
 
-const MyContext = createContext<ContextValue>({
+export const MyContext = createContext<ContextValue>({
   taskIsConcluded: () => false,
   toggleConcludedTasks: () => {},
 });

@@ -2,6 +2,8 @@ import Checkbox from "expo-checkbox";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
+type DecorationCheckedFontType = string;
+
 export const Container = styled.View`
   width: 100%;
   flex-direction: row;
@@ -25,7 +27,9 @@ export default styled(Checkbox)`
   justify-content: center;
 `;
 
-export const Assignment = styled.Text`
+export const Assignment = styled.Text<{
+  textDecoration: DecorationCheckedFontType;
+}>`
   align-items: center;
   align-self: center;
   flex: 1;
@@ -34,6 +38,7 @@ export const Assignment = styled.Text`
   color: #f2f2f2;
   padding-left: ${RFValue(8)}px;
   padding-right: ${RFValue(8)}px;
+  text-decoration: ${(props) => props.textDecoration};
 `;
 
 export const DeleteButton = styled.TouchableOpacity`
