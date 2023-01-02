@@ -22,7 +22,10 @@ export function CardList({ text, onRemove }: Assignment) {
         onValueChange={() => toggleConcludedTasks(text)}
         color={isChecked ? "#8284fa" : "#4ea8de"}
       />
-      <Assignment textDecoration={isChecked ? "line-through" : "none"}>
+      <Assignment
+        color={isChecked ? "#808080" : "#f2f2f2"}
+        textDecoration={isChecked ? "line-through" : "none"}
+      >
         {text}
       </Assignment>
       <DeleteButton onPress={onRemove}>
