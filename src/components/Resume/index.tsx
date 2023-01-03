@@ -1,24 +1,22 @@
 import React from "react";
+import { useTasks } from "../../context/Tasks";
 import { Container, Created, Completed, Text, CountBox, Count } from "./styles";
 
-interface Count {
-  createdQuantity: number;
-  concludedQuantity: number;
-}
+export function Resume() {
+  const { tasksData, concludedTasks } = useTasks();
 
-export function Resume({ createdQuantity, concludedQuantity }: Count) {
   return (
     <Container>
       <Created>
         <Text color="#4ea8de">Criadas</Text>
         <CountBox>
-          <Count>{createdQuantity}</Count>
+          <Count>{tasksData.length}</Count>
         </CountBox>
       </Created>
       <Completed>
         <Text color="#8284fa">Concluídas</Text>
         <CountBox>
-          <Count>{concludedQuantity}</Count>
+          <Count>{concludedTasks.length}</Count>
         </CountBox>
       </Completed>
     </Container>

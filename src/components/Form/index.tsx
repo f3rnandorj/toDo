@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddToDo, Input, SendButton } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
+import { useTasks } from "../../context/Tasks";
 
-interface Form {
-  value: string;
-  setValue: (value: string) => void;
-  addTask: () => void;
-}
+export function Form() {
+  const [value, setValue] = useState("");
+  const { addNewTask } = useTasks();
 
-export function Form({ value, setValue, addTask }: Form) {
+  function handleAddNewTask(task: any) {
+    addNewTask(task);
+    setValue("");
+  }
+
   return (
     <>
       <AddToDo>
@@ -17,7 +20,7 @@ export function Form({ value, setValue, addTask }: Form) {
           value={value}
           onChangeText={setValue}
         />
-        <SendButton onPress={addTask}>
+        <SendButton onPress={() => handleAddNewTask(value)}>
           <Ionicons name="add-circle-outline" size={24} color="#f2f2f2" />
         </SendButton>
       </AddToDo>

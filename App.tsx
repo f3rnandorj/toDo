@@ -7,6 +7,7 @@ import {
   Inter_700Bold,
   Inter_900Black,
 } from "@expo-google-fonts/inter";
+import { TasksProvider } from "./src/context/Tasks";
 
 export default function App() {
   const [fontLoaded] = useFonts({
@@ -17,9 +18,9 @@ export default function App() {
   });
 
   return (
-    <>
+    <TasksProvider>
       <StatusBar backgroundColor="#0d0d0d" barStyle="light-content" />
       {fontLoaded ? <Home /> : null}
-    </>
+    </TasksProvider>
   );
 }
