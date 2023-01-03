@@ -11,10 +11,10 @@ export const Container = styled.View`
   margin-bottom: ${RFValue(20)}px;
 `;
 
-export const Created = styled.View`
+export const Created = styled.TouchableOpacity`
   flex-direction: row;
 `;
-export const Completed = styled.View`
+export const Completed = styled.TouchableOpacity`
   flex-direction: row;
 `;
 

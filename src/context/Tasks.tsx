@@ -8,6 +8,9 @@ type TasksContextData = {
   removeTask: (task: string) => void;
   toggleConcludedTasks: (task: string) => void;
   taskIsConcluded: (task: string) => boolean;
+  showsTasks: () => void;
+  showsCheckedTasks: () => void;
+  showsNotCheckedTasks: () => void;
 };
 
 const TasksContext = createContext<TasksContextData>({} as TasksContextData);
@@ -15,9 +18,18 @@ const TasksContext = createContext<TasksContextData>({} as TasksContextData);
 const TasksProvider = ({ children }: any) => {
   const [tasksData, setTasksData] = useState<string[]>([]);
   const [concludedTasks, setConcludedTasks] = useState<string[]>([]);
+  const [tasksFromBehind, setTasksFromBehind] = useState<string[]>([]);
+
+  //Order tasks by checked or not checked
+  tasksData.sort((a) => (concludedTasks.includes(a) ? 1 : -1));
+
+  const notCheckedTasks = tasksData.filter(
+    (task) => !concludedTasks.includes(task)
+  );
 
   function addNewTask(task: string) {
     setTasksData((prevState) => [...prevState, task]);
+    setTasksFromBehind((prevState) => [...prevState, task]);
     Keyboard.dismiss();
   }
 
@@ -29,6 +41,11 @@ const TasksProvider = ({ children }: any) => {
           setTasksData((prevState) =>
             prevState.filter((task) => task !== value)
           );
+
+          setTasksFromBehind((prevState) =>
+            prevState.filter((task) => task !== value)
+          );
+
           setConcludedTasks((prevState) =>
             prevState.filter((concludedTask) => concludedTask !== value)
           );
@@ -51,9 +68,23 @@ const TasksProvider = ({ children }: any) => {
     }
   }
 
-  const taskIsConcluded = (task: string) => {
+  function taskIsConcluded(task: string) {
     return concludedTasks.includes(task);
-  };
+  }
+
+  //returns the value of completed list of tasks
+  function showsTasks() {
+    setTasksData(tasksFromBehind);
+  }
+
+  function showsCheckedTasks() {
+    setTasksData(concludedTasks);
+  }
+
+  //It's can be used to shows the not checked array of tasks
+  function showsNotCheckedTasks() {
+    setTasksData(notCheckedTasks);
+  }
 
   return (
     <TasksContext.Provider
@@ -64,6 +95,9 @@ const TasksProvider = ({ children }: any) => {
         removeTask,
         toggleConcludedTasks,
         taskIsConcluded,
+        showsTasks,
+        showsCheckedTasks,
+        showsNotCheckedTasks,
       }}
     >
       {children}
@@ -81,4 +115,4 @@ function useTasks(): TasksContextData {
   return context;
 }
 
-export { TasksContext, TasksProvider, useTasks };
+export { TasksProvider, useTasks };
