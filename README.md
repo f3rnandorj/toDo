@@ -33,6 +33,7 @@ Em ambas situações você deverá baixar o aplicativo "EXPO GO" ele permitira q
 Após iniciar a aplicação digite uma tarefa e clique no icone a direita para adicionar uma task, você pode adicionar e remover quantas tarefas quiser, 
 ainda podera verificar quais tarefas ja foram concluidas clicando no botão de "Concluidas", para retornar a todas as tarefas, basta clicar em "Criadas".
 
+### `Demonstração`
 ------------------------------------------------------------------
 https://user-images.githubusercontent.com/108803562/210564136-59dbab76-2674-40be-a132-61408b4ff596.mp4
 ------------------------------------------------------------------
