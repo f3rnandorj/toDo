@@ -3,7 +3,7 @@ import { useTasks } from "../../context/Tasks";
 import { Container, Created, Completed, Text, CountBox, Count } from "./styles";
 
 export function Resume() {
-  const { tasksData, concludedTasks, showsTasks, showsCheckedTasks } =
+  const { concludedTasks, showsTasks, showsCheckedTasks, tasksFromBehind } =
     useTasks();
 
   return (
@@ -11,7 +11,7 @@ export function Resume() {
       <Created onPress={showsTasks}>
         <Text color="#4ea8de">Criadas</Text>
         <CountBox>
-          <Count>{tasksData.length}</Count>
+          <Count>{tasksFromBehind.length}</Count>
         </CountBox>
       </Created>
       <Completed onPress={showsCheckedTasks}>

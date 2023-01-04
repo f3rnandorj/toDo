@@ -4,6 +4,7 @@ import { Alert, Keyboard } from "react-native";
 type TasksContextData = {
   tasksData: string[];
   concludedTasks: string[];
+  tasksFromBehind: string[];
   addNewTask: (task: string) => void;
   removeTask: (task: string) => void;
   toggleConcludedTasks: (task: string) => void;
@@ -91,6 +92,7 @@ const TasksProvider = ({ children }: any) => {
       value={{
         tasksData,
         concludedTasks,
+        tasksFromBehind,
         addNewTask,
         removeTask,
         toggleConcludedTasks,
