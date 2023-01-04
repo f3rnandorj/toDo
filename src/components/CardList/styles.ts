@@ -12,13 +12,13 @@ export const Container = styled.View`
   flex-direction: row;
   height: ${RFValue(64)}px;
   background-color: #333333;
-  padding: ${RFValue(15)}px;
   justify-content: space-between;
   align-items: center;
   border: ${RFValue(1)}px solid #262626;
   box-shadow: ${RFValue(0)}px ${RFValue(2)}px ${RFValue(8)}px
     rgba(0, 0, 0, 0.06);
   border-radius: ${RFValue(8)}px;
+  padding: 0 ${RFValue(15)}px;
   margin-bottom: ${RFValue(8)}px;
 `;
 
